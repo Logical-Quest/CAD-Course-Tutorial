@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Drive Video Player</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: rgb(65, 65, 114);
+        }
+
+        .video-container {
+            width: 100%; /* Ensure full width initially */
+            margin-bottom: 20px;
+            overflow: hidden;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* Center items horizontally */
+        }
+
+        .video-item {
+            width: calc(100% / 3); /* Adjust for 3 videos per row */
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .video-item iframe {
+            width: 100%;
+            height: 240px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        @media screen and (min-width: 768px) {
+            .video-item {
+                width: calc(100% / 3); /* Adjust for 3 videos per row */
+            }
+        }
+
+        @media screen and (max-width: 767px) {
+            .video-item {
+                width: 100%; /* Stack videos vertically on smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="video-container">
+        <div class="video-item">
+            <h2>Video 1</h2>
+            <iframe class="drive-frame" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="video-item">
+            <h2>Video 2</h2>
+            <iframe class="drive-frame" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="video-item">
+            <h2>Video 3</h2>
+            <iframe class="drive-frame" frameborder="0" allowfullscreen></iframe>
+        </div>
+        
+        <!-- Repeat for videos 4 to 6 -->
+        
+    </div>
+
+    <script>
+        const videos = [
+            'https://drive.google.com/file/d/15U9CKgE8cGkR-jHNSAIIAcAfwSNe-SCM/view?usp=sharing',
+            'https://drive.google.com/file/d/15U9CKgE8cGkR-jHNSAIIAcAfwSNe-SCM/view?usp=sharing',
+            'https://drive.google.com/file/d/15U9CKgE8cGkR-jHNSAIIAcAfwSNe-SCM/view?usp=sharing',
+            // Add URLs for videos 4 to 6 here
+        ];
+
+        // Loop through each video URL and set the iframe src
+        const iframes = document.querySelectorAll('.drive-frame');
+        videos.forEach((url, index) => {
+            iframes[index].src = url.replace('/view', '/preview');
+        });
+    </script>
+</body>
+</html>
